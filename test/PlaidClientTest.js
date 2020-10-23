@@ -1404,6 +1404,18 @@ describe('plaid.Client', () => {
     });
 
     describe('sandbox-only', () => {
+      it('sandboxProcessorTokenCreate', cb => {
+        pCl.sandboxProcessorTokenCreate(
+          testConstants.INSTITUTION,
+          {},
+          (err, successResponse) => {
+            expect(err).to.be(null);
+            expect(successResponse).to.be.ok();
+            expect(successResponse.processor_token).to.be.ok();
+          },
+        );
+      });
+
       it('sandboxPublicTokenCreate', cb => {
         pCl.sandboxPublicTokenCreate(
           testConstants.INSTITUTION, [testConstants.PRODUCTS[0]], {},
